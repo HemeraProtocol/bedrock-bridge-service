@@ -25,7 +25,7 @@
         <scopt.version>4.1.0</scopt.version>
         <flyway.version>9.22.3</flyway.version>
         <json4s.version>4.0.6</json4s.version>
-        <http4s.version>0.23.25</http4s.version>
+        <http4s.version>1.0.0-M30</http4s.version>
         <!-- The Plugin Version -->
         <git-commit-id-plugin.version>4.0.0</git-commit-id-plugin.version>
         <scala-maven-plugin.version>4.8.1</scala-maven-plugin.version>
@@ -36,37 +36,6 @@
     </properties>
 
     <dependencies>
-
-        <dependency>
-            <groupId>com.typesafe.slick</groupId>
-            <artifactId>slick_2.12</artifactId>
-            <version>3.5.0-M5</version>
-        </dependency>
-        <dependency>
-            <groupId>io.circe</groupId>
-            <artifactId>circe-generic_sjs1_2.12</artifactId>
-            <version>0.14.6</version>
-        </dependency>
-        <dependency>
-            <groupId>org.http4s</groupId>
-            <artifactId>http4s-blaze-server_2.12</artifactId>
-            <version>0.23.1</version>
-        </dependency>
-        <dependency>
-            <groupId>org.http4s</groupId>
-            <artifactId>http4s-blaze-client_2.12</artifactId>
-            <version>0.23.1</version>
-        </dependency>
-        <dependency>
-            <groupId>org.http4s</groupId>
-            <artifactId>http4s-dsl_2.12</artifactId>
-            <version>0.23.1</version>
-        </dependency>
-        <dependency>
-            <groupId>org.http4s</groupId>
-            <artifactId>http4s-circe_2.12</artifactId>
-            <version>0.23.1</version>
-        </dependency>
         <dependency>
             <groupId>org.json4s</groupId>
             <artifactId>json4s-native_${scala.binary.version}</artifactId>
@@ -130,6 +99,43 @@
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-slf4j-impl</artifactId>
             <version>${log4j.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.typesafe.slick</groupId>
+            <artifactId>slick_${scala.binary.version}</artifactId>
+            <version>3.5.0-M5</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>slf4j-api</artifactId>
+                    <groupId>org.slf4j</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>io.circe</groupId>
+            <artifactId>circe-generic_sjs1_${scala.binary.version}</artifactId>
+            <version>0.14.6</version>
+        </dependency>
+        <dependency>
+            <groupId>org.http4s</groupId>
+            <artifactId>http4s-blaze-server_${scala.binary.version}</artifactId>
+            <version>${http4s.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.http4s</groupId>
+            <artifactId>http4s-blaze-client_${scala.binary.version}</artifactId>
+            <version>${http4s.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.http4s</groupId>
+            <artifactId>http4s-dsl_${scala.binary.version}</artifactId>
+            <version>${http4s.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.http4s</groupId>
+            <artifactId>http4s-circe_${scala.binary.version}</artifactId>
+            <version>${http4s.version}</version>
         </dependency>
     </dependencies>
 
