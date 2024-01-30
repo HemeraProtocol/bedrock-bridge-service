@@ -17,6 +17,7 @@ services:
       - 8080:8080
     command: >
       com.lifo.server.SocialscanServer
+    restart: always
 
   l1_sync:
     <<: *shared-configuration

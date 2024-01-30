@@ -1,0 +1,8 @@
+.idea
+.DS_Store
+.bsp
+ethereum-sync
+postgres_data
+project
+target
+*.iml
