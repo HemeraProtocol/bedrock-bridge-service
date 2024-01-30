@@ -1,0 +1,58 @@
+version: '3'
+
+x-shared-configuration: &shared-configuration
+  image: lifo/ethereum-sync:latest
+  depends_on:
+    - postgres
+  environment:
+    POSTGRESQL_URL: ${POSTGRESQL_URL}
+    POSTGRESQL_USERNAME: ${POSTGRESQL_USERNAME}
+    POSTGRESQL_PASSWORD: ${POSTGRESQL_PASSWORD}
+  volumes:
+    - ./ethereum-sync:/ethereum-sync
+services:
+  server:
+    <<: *shared-configuration
+    ports:
+      - 8080:8080
+    command: >
+      com.lifo.server.SocialscanServer
+
+  l1_sync:
+    <<: *shared-configuration
+    command: >
+      com.lifo.sync.EthereumSync -p ${L1_RPC_URL} -s 18095871
+      --bridge_on_chain=L1 --contract_address=0x9168765ee952de7c6f8fc6fad5ec209b960b7622 
+      --sync_file /ethereum-sync/sync-l1.txt -P 5 -B 100 -b 200
+    restart: always
+
+  l2_sync:
+    <<: *shared-configuration
+    command: > 
+      com.lifo.sync.EthereumSync -p ${L2_RPC_URL} -s 0
+      --bridge_on_chain=L2 --contract_address=0x4200000000000000000000000000000000000007
+      --sync_file /ethereum-sync/sync-l2.txt -P 5 -B 1000 -b 200
+    restart: always
+
+  state_batch_sync:
+    <<: *shared-configuration
+    command: >
+      com.lifo.sync.EthereumSync -p ${BATCH_RPC_URL} -s 18095856
+      --bridge_on_chain=STATE_BATCH
+      --contract_address=0x30c789674ad3b458886bbc9abf42eee19ea05c1d
+      --sync_file /ethereum-sync/sync-batch.txt -P 5 -B 1000 -b 200
+    volumes:
+      - ./ethereum-sync:/ethereum-sync
+    restart: always
+
+  postgres:
+    image: postgres:15.5
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: ${POSTGRESQL_PASSWORD}
+    volumes:
+      - ./postgres_data:/var/lib/postgresql/data
+    restart: always
+
+

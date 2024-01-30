@@ -1,0 +1,83 @@
+[
+  {
+    "constant": false,
+    "inputs": [
+      {"name": "_blockStartHeight", "type": "uint256", "internalType":  "uint256"},
+      {"name": "_length", "type": "uint32", "internalType":  "uint32"},
+      {"name": "_batchTime", "type": "uint256", "internalType":  "uint256"},
+      {"name": "_tssMembers", "type": "address[]", "internalType":  "address[]"}
+    ],
+    "name": "claimReward",
+    "outputs": [],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {"name": "_l1Token", "type": "address", "internalType":  "address"},
+      {"name": "_l2Token", "type": "address", "internalType":  "address"},
+      {"name": "_from", "type": "address", "internalType":  "address"},
+      {"name": "_to", "type": "address", "internalType":  "address"},
+      {"name": "_amount", "type": "uint256", "internalType": "bytes"},
+      {"name": "_data", "type": "bytes", "internalType": "bytes"}
+    ],
+    "name": "finalizeDeposit",
+    "outputs": [],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {"name": "_shouldRollBack", "type": "uint256", "internalType": "uint256"},
+      {"name": "_shouldStartAtElement", "type": "uint256", "internalType": "uint256"},
+      {"name": "_signature", "type": "bytes", "internalType": "bytes"}
+    ],
+    "name": "rollBackL2Chain",
+    "outputs": [],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {"name": "_from", "type": "address", "internalType": "address"},
+      {"name": "_to", "type": "address", "internalType": "address"},
+      {"name": "_amount", "type": "uint256", "internalType": "uint256"},
+      {"name": "_data", "type": "bytes", "internalType": "bytes"}
+    ],
+    "name": "finalizeETHWithdrawal",
+    "outputs": [],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {"name": "_from", "type": "address", "internalType": "address"},
+      {"name": "_to", "type": "address", "internalType": "address"},
+      {"name": "_amount", "type": "uint256", "internalType": "uint256"},
+      {"name": "_data", "type": "bytes", "internalType": "bytes"}
+    ],
+    "name": "finalizeMantleWithdrawal",
+    "outputs": [],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {"name": "_l1Token", "type": "address",  "internalType": "address"},
+      {"name": "_l2Token", "type": "address",  "internalType": "address"},
+      {"name": "_from", "type": "address",  "internalType": "address"},
+      {"name": "_to", "type": "address",  "internalType": "address"},
+      {"name": "_amount", "type": "uint256",  "internalType": "uint256"},
+      {"name": "_data", "type": "bytes",  "internalType": "bytes"}
+    ],
+    "name": "finalizeERC20Withdrawal",
+    "outputs": [],
+    "stateMutability": "view",
+    "type": "function"
+  }
+]
