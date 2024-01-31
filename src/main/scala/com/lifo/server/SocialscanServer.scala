@@ -31,7 +31,7 @@ object SocialscanServer extends IOApp {
     )
 
     BlazeServerBuilder[IO](global)
-      .bindHttp(8080, "localhost")
+      .bindHttp(8080, "0.0.0.0")
       .withHttpApp(withErrorLogging)
       .serve
       .compile

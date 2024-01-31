@@ -10,7 +10,7 @@ object DatabaseOperations {
     val query = TableQuery[L1ToL2Transactions]
       .filter(_.l1BlockNumber.isDefined)
       .filterOpt(addressFilter) { case (table, address) => table.toAddress === address.toLowerCase}
-      .sortBy(_.index)
+      .sortBy(_.index.desc)
       .drop((page - 1) * pageSize)
       .take(pageSize)
 
@@ -36,7 +36,7 @@ object DatabaseOperations {
     val query = TableQuery[L2ToL1Transactions]
       .filter(_.l2BlockNumber.isDefined)
       .filterOpt(addressFilter) { case (table, address) => table.toAddress === address.toLowerCase}
-      .sortBy(_.index)
+      .sortBy(_.index.desc)
       .drop((page - 1) * pageSize)
       .take(pageSize)
 
