@@ -37,8 +37,8 @@ object Routes {
     case value: java.sql.Timestamp =>
 
       val timestamp = new Timestamp(System.currentTimeMillis())
-      val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
-      val formattedDate = timestamp.toLocalDateTime.format(formatter)
+      val formatter = DateTimeFormatter.ISO_DATE_TIME
+      val formattedDate = timestamp.toLocalDateTime.atOffset(java.time.ZoneOffset.UTC).format(formatter)
       Json.fromString(formattedDate)
     case value: Int    => Json.fromInt(value)
     case value: Long   => Json.fromLong(value)

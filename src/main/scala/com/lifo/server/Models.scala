@@ -97,7 +97,7 @@ case class L2ToL1Transaction(
     ts.toInstant.atZone(ZoneId.of("UTC")).plusDays(days)
   }
 
-  def getType(fn: Long, expiredDay: Int = 3): Int = {
+  def getStatus(fn: Long, expiredDay: Int = 3): Int = {
     if (fn < l2BlockNumber.get){
       1 // Transaction not finalized
     } else {
@@ -112,7 +112,7 @@ case class L2ToL1Transaction(
   }
 
   def toMap(finalizedBlockNumber: Long): Map[String, Any] = Map(
-    "type" -> getType(finalizedBlockNumber),
+    "status" -> getStatus(finalizedBlockNumber),
     "version" -> version,
     "index" -> index,
     "l2_from_address" -> l2FromAddress,

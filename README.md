@@ -57,6 +57,16 @@ Before you begin, ensure you have installed:
     - **page** (optional): The page number. Default: 1
     - **address** (optional): The address to filter by to_address
 
+## Additional Notes
+### About L2 to L1 Transactions(Withdrawal) Status
+The L2 to L1 transactions status is indicated by the `status` field in the response. The status can be one of the following:
+
+1. **waiting**: The L2 transaction is pending and has not been confirmed on L1.
+2. **ready_to_prove**: The transaction is ready to be proven on L1.
+3. **in_challenge_period**: The transaction is in the challenge period on L1. waiting for the challenge period to end. The Manta-Pacific Bridge has a **3**-day challenge period.
+4. **ready_to_finalize**: The transaction is out of the challenge period and ready to be finalized on L1.
+5. **relayed**: The transaction has been relayed to L1.
+
 ## Documentation
 
 For more detailed information about the deposit and withdrawal flows in the Optimism network, refer to the following documents:
