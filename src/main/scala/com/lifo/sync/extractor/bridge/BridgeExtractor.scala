@@ -5,5 +5,5 @@ import com.lifo.sync.io.jdbc.`type`.PostgresqlRow
 import scala.collection.mutable.ListBuffer
 
 trait BridgeExtractor {
-    def extract(transactions: Array[Transaction]): ListBuffer[Array[PostgresqlRow]] = ???
+    def extract(transactions: Array[Transaction], contractAddress: String): ListBuffer[Array[PostgresqlRow]] = ???
 }

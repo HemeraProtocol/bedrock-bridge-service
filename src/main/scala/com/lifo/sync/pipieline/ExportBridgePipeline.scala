@@ -45,7 +45,7 @@ class ExportBridgePipeline(
       val receipts = receiptExporter.exportAll(transactionInfos.map(_.hash))
 
       val transactions = enrich(blocks, receipts)
-      val data = extractor.extract(transactions)
+      val data = extractor.extract(transactions, filter.contractAddress)
       if (data.flatten.isEmpty) {
         logger.info(s"Exporting blocks: $currentBlockNumber to $nextBlockNumber. No data to export.")
       } else {
